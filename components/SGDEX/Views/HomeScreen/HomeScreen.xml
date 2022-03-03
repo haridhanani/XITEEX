@@ -1,0 +1,13 @@
+<component name="HomeScreen" extends="SGDEXComponent" initialFocus="RowList">
+
+    <interface>
+       
+    </interface>
+
+    <script type="text/brightscript" uri="HomeScreen.brs" />
+
+    <children>
+        
+       
+    </children>
+</component>
