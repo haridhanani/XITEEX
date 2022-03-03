@@ -15,6 +15,10 @@ sub StartSGDEXChannel(componentName, args)
     screen.SetMessagePort(m.port)
     scene = screen.CreateScene(componentName)
 
+
+    m.global = screen.getGlobalNode()
+    m.global.addFields({dialog : {}})
+
     scene.theme = {
         global: {
             OverhangVisible : "false"

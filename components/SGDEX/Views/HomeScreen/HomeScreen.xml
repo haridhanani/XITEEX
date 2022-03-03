@@ -1,4 +1,4 @@
-<component name="HomeScreen" extends="SGDEXComponent" initialFocus="RowList">
+<component name="HomeScreen" extends="SGDEXComponent" initialFocus="SearchBox">
     <interface>
        
     </interface>
@@ -9,7 +9,43 @@
         <script type="text/brightscript" uri="../../../../source/utils/string.brs" />
 
     <children>
+        <PosterText
+            id="SearchBox"
+            translation="[260,70]"
+            width="1400"
+            height="68"
+            hintText="Search query"/>
+
+        <AButton
+            translation="[90,190]"
+            id="FilterButton"
+            width="230"
+            height="60"
+            name="Select Filters"
+            backColor="0x3a3a3a"
+            focusBackColor="#4d0909"
+            textColor="0xFFFFFF"
+            focusTextColor="0xFFFFFF"
+            focusable="true"/>    
+
         
+        <RowList
+            id="FilterItemList"
+            itemComponentName="ButtonItem"
+            rowFocusAnimationStyle="fixedFocus"
+            numRows="1"
+            variableWidthItems="[true]"
+            drawFocusFeedback="false"
+            rowitemSpacing="[[30,30]]"
+            rowItemSize = "[[55, 60]]"
+            translation="[400,190]"
+            rowHeights="[100]"/>  
+
+        <Label
+            id="filterNoText"
+            translation="[400,205]"
+            text = "To Filter Videos, Please select Filter button"/>    
+
         <RowList 
             id="RowList"
             translation="[0,300]"
@@ -24,5 +60,63 @@
             showRowCounter="false"
             rowLabelOffset="[[74,20]]"
             focusXOffset="[74]"/> 
+
+        <Label
+            id="noContent"
+            height="1080"
+            width="1920"
+            horizAlign = "center"
+            vertAlign = "center"
+            text="No Data To Display"
+            visible="false"/> 
+
+        <LayoutGroup
+            id="spinnerGroup"
+            translation="[960,540]"
+            horizAlignment="center"
+            vertAlignment="center"
+            visible="false" >
+                <BusySpinner
+                    id="spinner"
+                    uri="pkg:/components/SGDEX/Images/loader.png"
+                    visible="true"/>
+        </LayoutGroup>       
+
+        <Rectangle
+            width="1920"
+            height="1080"
+            translation="[0,300]"
+            color="#000000"
+            id="filterFox"
+            visible="false">   
+            <Label
+                text="Press back button to Close Filters"
+                translation="[100,10]"/>
+            <LayoutGroup
+                layoutDirection="horiz"
+                itemSpacings="[40]"
+                translation="[100,90]">
+                <LayoutGroup
+                    itemSpacings="[20]">
+                    <Label
+                        text="Genre Filters"/>
+                    <CheckList
+                        id="GenreCheckList"/>
+                </LayoutGroup>
+                <LayoutGroup
+                    itemSpacings="[20]">
+                    <Label
+                        text="Year Filters"/>
+                   <CheckList
+                        id="YearCheckList"/>     
+                </LayoutGroup>
+            </LayoutGroup>
+        </Rectangle>    
+
+         <Label
+            id="test"
+            visible="false">
+            <Font role = "font" uri = "pkg:/components/SGDEX/fonts/GothicA1-Medium.ttf" size = "24" />
+        </Label>  
     </children>
 </component>

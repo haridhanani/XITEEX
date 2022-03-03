@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (c) 2018 Roku, Inc. All rights reserved. -->
+
+<component name="PosterText" extends="Group" xsi:noNamespaceSchemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
+    <interface>
+      <field id="width" type="float" onChange="onWidthChange"  alias="poster.width"/>
+      <field id="height" type="float" onChange="onHeightChange" alias="poster.height" />
+      <field id="text" type="boolean" alias="textbox.text" onchange="onTextChange" />
+      <field id="hintText" type="string" alias="textbox.hintText" />
+      <field id="itemContent" type="node" onChange="OnContentSet" />
+    </interface>
+
+    <script type="text/brightscript" uri="PosterText.brs" />
+    <script type="text/brightscript" uri="pkg:/components/SGDEX/Views/utils/Utils.brs" />
+
+    <children>
+
+        <Poster
+            id="Poster"
+            uri="pkg:/images/TextField.png">
+            <TextEditBox
+                id="textbox"
+                hintTextColor="#9a9a9a"
+                backgroundUri="pkg:/"/>
+        </Poster>    
+    
+    </children>
+</component>
