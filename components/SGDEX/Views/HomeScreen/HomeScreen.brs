@@ -44,14 +44,27 @@ Function init()
 
     m.genre = {}
 
-    GetData()
+    m.lastFocused = invalid
 
 End Function    
+
+Function OnWasShown(event as object)
+    if m.lastFocused <> invalid
+        m.lastFocused.setfocus(true)
+    end if
+
+    if m.Videos.count() = 0
+        GetData()
+    end if
+End Function
 
 Function filterFoxVisibleChanged(event as object)
     if event.getdata() = false
         Videos = VideoFilterByQuery()   
         SetupRowListGrid(Videos)
+    else 
+        setupGenresFilterList()
+        setupYearFilterCheckList()
     end if
 End Function
 
@@ -64,6 +77,9 @@ Function GetData()
         response = ParseJSON(results)
         if response <> invalid
             HandleResponse(response)
+        else
+            m.noContent.visible = true
+            ShowBusySpinner(false)
         end if
     end sub)
 End Function
@@ -193,7 +209,6 @@ Function HandleResponse(data as object)
     if data.videos <> invalid
         m.Videos = data.videos
         GetYearsList(data.videos)
-        setupYearFilterCheckList()
     end if
 
     if data.genres <> invalid
@@ -201,7 +216,6 @@ Function HandleResponse(data as object)
         for each genre in data.genres
             m.genre.AddReplace(genre.id.tostr(),genre.name)
         end for
-        setupGenresFilterList()
     end if
 
     Videos = VideoFilterByQuery()   
@@ -360,9 +374,6 @@ function onkeyEvent(key as String, press as Boolean) as Boolean
                 }
                 m.global.setfields({dialog : data})
                 handled = true
-            else if m.FilterButton.hasFocus()
-                m.filterFox.visible = true
-                m.GenreCheckList.setfocus(true)
             end if
        else if key = "right"
             if m.GenreCheckList.isInFocusChain()
@@ -383,6 +394,7 @@ function onkeyEvent(key as String, press as Boolean) as Boolean
             else if m.FilterButton.hasFocus() or m.FilterItemList.hasFocus()
                 if m.RowList.content <> invalid
                     m.RowList.setfocus(true)
+                    m.lastFocused = m.RowList
                     handled = true
                 end if
             end if
@@ -406,8 +418,13 @@ function onkeyEvent(key as String, press as Boolean) as Boolean
 end function
 
 Function onButtonSelected(event as object)
-    m.filterFox.visible = true
-    m.GenreCheckList.setfocus(true)
+    if m.genresFilterList.count() > 0 
+        m.GenreCheckList.setfocus(true)
+        m.filterFox.visible = true
+    else if m.YearFilterList.Count() > 0
+        m.YearFilterList.setfocus(true)
+        m.filterFox.visible = true
+    end if 
 End function
 
 sub ShowBusySpinner(shouldShow as Boolean)

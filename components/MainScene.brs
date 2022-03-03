@@ -41,7 +41,15 @@ end function
 
 Function ShowHomeScreen()
     m.HomeScreen = CreateObject("roSGNode", "HomeScreen")
+    m.HomeScreen.findNode("rowList").observeField("rowItemSelected", "onRowItemSelected")
     m.top.ComponentController.CallFunc("show", {
         view: m.HomeScreen
     })
+End Function
+
+Function onRowItemSelected(event as object)
+    index = event.getData()
+    data = event.GetRoSGNode().content.GetChild(index[0]).GetChild(index[1])
+    data.url = "http://www.sample-videos.com/video123/mp4/720/big_buck_bunny_720p_5mb.mp4"
+    OpenVideoPlayerItem(data)
 End Function

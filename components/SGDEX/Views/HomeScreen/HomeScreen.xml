@@ -90,7 +90,7 @@
             id="filterFox"
             visible="false">   
             <Label
-                text="Press back button to Close Filters"
+                text="****** Press back button to Close Filters"
                 translation="[100,10]"/>
             <LayoutGroup
                 layoutDirection="horiz"
