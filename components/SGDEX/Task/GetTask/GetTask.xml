@@ -2,10 +2,9 @@
 
 <!--********** Copyright 2016 Roku Corp.  All Rights Reserved. **********-->
 
-<component name = "GetdataTask" extends = "Task" >
+<component name = "GetTask" extends = "Task" >
     <interface>
           <field id = "url" type = "string" />
-          <field id = "requests" type = "assocarray" />
           <field id = "output" type = "string" />
     </interface>
     <script type="text/brightscript" uri="GetTask.brs" />

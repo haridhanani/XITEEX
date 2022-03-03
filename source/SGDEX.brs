@@ -15,6 +15,14 @@ sub StartSGDEXChannel(componentName, args)
     screen.SetMessagePort(m.port)
     scene = screen.CreateScene(componentName)
 
+    scene.theme = {
+        global: {
+            OverhangVisible : "false"
+            backgroundColor: "#000000"
+        }
+    }
+
+
     ' Execute MainInit function, if defined by developer, prior to showing the RSG scene
     if Type(MainInit) = "Function" OR Type(MainInit) = "roFunction"
         MainInit(screen, args)
