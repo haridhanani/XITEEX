@@ -314,7 +314,7 @@ sub SGDEX_UpdateViewUI()
 
             ' adjust poster size based on overhang and buttonBar height adjust poster size based on overhang and buttonBar sizes 
             ' to avoid situation when npm UI gets out of the safe zone
-            vertDiff = 720 - nowPlayingUIGroupYPosition - m.contentAreaSafeZoneYPosition - nowPlayingUIGroupHeight - yOffset
+            vertDiff = 1080 - nowPlayingUIGroupYPosition - m.contentAreaSafeZoneYPosition - nowPlayingUIGroupHeight - yOffset
             if vertDiff < 0
                 if vertDiff >= -150
                     poster.maxHeight = 300 + vertDiff

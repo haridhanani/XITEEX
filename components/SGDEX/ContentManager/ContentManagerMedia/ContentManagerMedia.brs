@@ -381,8 +381,8 @@ sub CreateMediaNode()
         else
             m.topView.AppendChild(video)
         end if
-        video.width = "1280"
-        video.height = "720"
+        video.width = "1920"
+        video.height = "1080"
         video.translation = "[0,0]"
         InitMediaWithContentMediaFields(video)
         video.id = "video"
@@ -401,8 +401,8 @@ sub CreateMediaNode()
             m.topView.AppendChild(audio)
             m.topView.FindNode("background").visible = false
         end if
-        audio.width = "1280"
-        audio.height = "720"
+        audio.width = "1920"
+        audio.height = "1080"
         audio.translation = "[0,0]"
         audio.enableUI = true
         InitMediaWithContentMediaFields(audio)
@@ -511,10 +511,10 @@ sub OnPlayBarVisibilityHintChanged(event as Object)
         if m.topView.npn <> invalid
             if m.trickplayVisible
                 m.topView.npn.playBarVisible = false
-                m.topView.media.clippingRect = [0, 600, 1280, 120]
+                m.topView.media.clippingRect = [0, 600, 1920, 120]
             else
                 m.topView.npn.playBarVisible = true
-                m.topView.media.clippingRect = [0, 720, 1280, 720]
+                m.topView.media.clippingRect = [0, 1080, 1920, 1080]
             end if
         end if
     else if m.isButtonBarVisible

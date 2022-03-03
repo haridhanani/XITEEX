@@ -1,5 +1,5 @@
 sub init()
-    m.top.clippingRect = [0, 600, 1280, 720]
+    m.top.clippingRect = [0, 600, 1920, 1080]
 end sub
 
 function OnKeyEvent(key as String, press as Boolean) as Boolean

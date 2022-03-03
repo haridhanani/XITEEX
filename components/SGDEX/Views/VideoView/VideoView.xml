@@ -175,8 +175,8 @@
 
     <children>
         <Rectangle
-            width="1280"
-            height="720"
+            width="1920"
+            height="1080"
             translation="[0,0]"
             color="0x000000FF"
         />

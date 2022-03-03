@@ -11,9 +11,9 @@ sub Init()
     m.defaultOverhangHeight = 115
 
     ' Minimum Y offset from top edge of the screen to content
-    m.buttonBarSafeZoneYPosition = 36 ' 720 * 0.05
-    m.contentAreaSafeZoneYPosition = 72 ' 720 * 0.10
-    m.contentAreaSafeZoneXPosition = 128 ' 1280 * 0.10
+    m.buttonBarSafeZoneYPosition = 36 ' 1080 * 0.05
+    m.contentAreaSafeZoneYPosition = 72 ' 1080 * 0.10
+    m.contentAreaSafeZoneXPosition = 128 ' 1920 * 0.10
 
     m.top.overhang = m.top.FindNode("overhang")
     m.top.overhang.ObserveField("height", "SGDEX_OnOverhangHeightChange")

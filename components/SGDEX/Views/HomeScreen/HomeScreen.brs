@@ -13,6 +13,8 @@ Function init()
     m.StringUtil = StringUtil()
     m.ArrayUtil = ArrayUtil()
 
+    m.RowList = m.top.FindNode("RowList")
+
     GetData()
 End Function    
 
@@ -39,8 +41,33 @@ Function HandleResponse(data as object)
         m.genresFilterList = data.genres
     end if
 
-    VideoFilterByQuery()   
+    Videos = VideoFilterByQuery()   
+    SetupRowListGrid(Videos)
 End Function
+
+Function SetupRowListGrid(data as object)
+    content = CreateObject("roSGNode","ContentNode")
+    for i=0 to data.count()-1 step 4
+        row = CreateObject("roSGNode","ContentNode")
+        for j=i to j+3
+            if data[j] <> invalid
+                dataItem = {
+                    image_url : data[j].image_url
+                    title : data[j].title
+                    artist : data[j].artist
+                }
+                item = CreateObject("roSGNode","ContentNode")
+                item.update(dataItem,true)
+                row.appendChild(item)
+            end if
+        end for
+        if row.getchildCount() > 0
+            content.appendChild(row)
+        end if
+    end for
+    m.RowList.content = content
+End Function
+
 
 Function GetYearsList(data as object)
     if data <> invalid and data.count() > 0
@@ -61,7 +88,6 @@ Function VideoFilterByQuery()
             if (VideoItem.title <> invalid and m.StringUtil.contains(LCase(VideoItem.title.toStr()),Lcase(m.query),0)) or (VideoItem.artist <> invalid and m.StringUtil.contains(LCase(VideoItem.artist.toStr()),Lcase(m.query),0))
                 if CheckVideoForYearFilter(VideoItem) and CheckVideoForGenre(VideoItem)
                     videos.push(VideoItem)
-                    ? VideoItem
                 end if
             end if
         end for
@@ -69,7 +95,6 @@ Function VideoFilterByQuery()
         for each VideoItem in m.Videos
             if CheckVideoForYearFilter(VideoItem) and CheckVideoForGenre(VideoItem)
                 videos.push(VideoItem)
-                ? VideoItem
             end if
         end for
     end if

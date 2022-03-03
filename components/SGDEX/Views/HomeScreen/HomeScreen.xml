@@ -10,6 +10,19 @@
 
     <children>
         
-       
+        <RowList 
+            id="RowList"
+            translation="[0,300]"
+            itemComponentName = "RowListItem"
+            drawFocusFeedback = "true"
+            itemSize="[1920, 400]"
+            numRows="3"
+            itemSpacing="[100, 10]"
+            rowItemSize="[[368, 208]]"
+            rowItemSpacing="[[100, 60]]"
+            showRowLabel= "[true]"
+            showRowCounter="false"
+            rowLabelOffset="[[74,20]]"
+            focusXOffset="[74]"/> 
     </children>
 </component>

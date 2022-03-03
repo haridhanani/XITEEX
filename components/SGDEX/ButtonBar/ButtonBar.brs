@@ -51,7 +51,7 @@ sub OnTranslationChanged()
     
     buttonBarYSpacing = m.buttonBarLayout.itemSpacings[0] * 2 + m.buttonsRowList.itemSpacing[1] - 2
     buttonBarListX = m.buttonBarLayout.translation[0]
-    contentAreaSafeZoneYPosition = 72 ' 720 * 0.10
+    contentAreaSafeZoneYPosition = 72 ' 1080 * 0.10
 
     if m.top.alignment = "left" and m.top.visible = true
         ' Calculating visible buttons on buttonBar to switch animation
@@ -61,9 +61,9 @@ sub OnTranslationChanged()
             buttonsCount = m.buttonsRowList.content.getChildCount()
             itemHeight = m.buttonsRowList.itemSize[1]
             if overhang.height = 0
-                safeZone = (720 - contentAreaSafeZoneYPosition*2)
+                safeZone = (1080 - contentAreaSafeZoneYPosition*2)
             else
-                safeZone = (720 - overhang.height - contentAreaSafeZoneYPosition)
+                safeZone = (1080 - overhang.height - contentAreaSafeZoneYPosition)
             end if
             if buttonsCount > 0 and safeZone > 0
                 visibleNumRows = CInt(safeZone / (itemHeight + 10))
@@ -140,7 +140,7 @@ sub SetButtonBarContent(content as Object)
             ' Calculating visible buttons on buttonBar to switch animation
             ' The vertical BB uses floating focus when there are not enough buttons to wrap
             ' and uses fixed focus once the set of buttons gets big enough to wrap.
-            safeZone = (720 - m.defaultOverhangHeight - 72)
+            safeZone = (1080 - m.defaultOverhangHeight - 72)
             numRows = Cint(safeZone / m.buttonHeight)
             if buttonsCount >= numRows
                 m.buttonsRowList.vertFocusAnimationStyle="fixedFocusWrap"
@@ -319,7 +319,7 @@ sub AlignButtonBar()
         fadeOutInterpolator = m.top.findNode("fadeOutInterpolator")
         m.buttonBarLayout.layoutDirection="horiz"
         m.backgroundRectangle.height = m.buttonHeight + m.backgroundMargin*2
-        m.backgroundRectangle.width = 1280
+        m.backgroundRectangle.width = 1920
         buttonBarY = CInt(m.buttonHeight/2 + m.backgroundMargin)
         centerX = m.backgroundRectangle.width / 2
         m.buttonBarLayout.vertAlignment = "center"
@@ -361,7 +361,7 @@ sub AlignButtonBar()
         else
             m.backgroundRectangle.width = m.backgroundWidth
         end if
-        m.backgroundRectangle.height = 720
+        m.backgroundRectangle.height = 1080
         m.buttonBarArrow.visible = false
 
         if m.buttonBarHeight > 430

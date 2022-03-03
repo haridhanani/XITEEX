@@ -105,8 +105,8 @@ sub CreateVideoNode() as Object
 
     video = m.top.createChild("Video")
     video.id = "video"
-    video.width = "1280"
-    video.height = "720"
+    video.width = "1920"
+    video.height = "1080"
     video.translation = "[0,0]"
     video.enableUI = "false"
     video.disableScreenSaver = m.top.disableScreenSaver

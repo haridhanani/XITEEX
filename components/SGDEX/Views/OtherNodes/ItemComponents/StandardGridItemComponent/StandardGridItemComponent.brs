@@ -6,7 +6,6 @@ sub onContentSet()
         m.top.findNode("poster").uri = content.hdPosterUrl
         line1 = m.top.findNode("line1")
         line2 = m.top.findNode("line2")
-        ' contentSetLine is field to check if text is set to label
         setLabelDataOrHide(line1, content.shortDescriptionLine1)
         setLabelDataOrHide(line2, content.shortDescriptionLine2)
         setDurationBarData(content)

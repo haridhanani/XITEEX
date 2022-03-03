@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (c) 2018 Roku, Inc. All rights reserved. -->
+
+<component name="RowListItem" extends="Group" xsi:noNamespaceSchemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
+    <interface>
+      <field id="width" type="float" onChange="onWidthChange"  />
+      <field id="height" type="float" onChange="onHeightChange" />
+      <field id="itemContent" type="node" onChange="OnContentSet" />
+    </interface>
+
+    <script type="text/brightscript" uri="RowListItem.brs" />
+    <script type="text/brightscript" uri="pkg:/components/SGDEX/Views/utils/Utils.brs" />
+
+    <children>
+
+        <LayoutGroup
+            itemspacings="[30,20]">
+            <Poster
+                id="poster"
+                loadDisplayMode="limitSize"/>
+            <Label id="line1" maxLines="1" horizAlign = "center" visible="true">
+                <Font role = "font" uri = "pkg:/components/SGDEX/fonts/GothicA1-Bold.ttf" size = "30" />
+            </Label> 
+            <Label id="line2" maxLines="1" horizAlign = "center" visible="true">
+                <Font role = "font" uri = "pkg:/components/SGDEX/fonts/GothicA1-Medium.ttf" size = "25" />
+            </Label> 
+        </LayoutGroup>
+    
+    </children>
+</component>
